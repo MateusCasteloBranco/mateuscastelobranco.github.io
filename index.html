@@ -466,6 +466,11 @@ estas estejam coerentes. Após isso é feita a chamada da função que percorrer
 <div class="paragraph">
 <p>Ao final do programa é exibida uma instrutiva e singela mensagem dedicada a um aleatório usuário.</p>
 </div>
+<div class="literalblock">
+<div class="content">
+<pre>//trecho do cout</pre>
+</div>
+</div>
 <div class="paragraph">
 <p>&#8594;Segunda Atividade: Deslocando Regiões.</p>
 </div>
@@ -473,8 +478,12 @@ estas estejam coerentes. Após isso é feita a chamada da função que percorrer
 <p>A segunda atividade ainda diz respeito à manipulção de pixels dentro de um quadro de imagem e também conta com o uso da classe <em>pose</em>, porém tem por objetivo modificar os valores de certos pontos da imagem por outros valores de pontos também dentro da imagem, de forma a produzir um efeito de deslocamento de certas regiões da imagem, produzindo um efeito de "quebra-cabeças" em especial invertendo o primeiro quadrante com o terceiro e o segundo quadrante com quarto.</p>
 </div>
 <div class="paragraph">
-<p>Explorando funcionalidades da biblioteca OpenCV são definidas 4 matrizes por construtores que englobam os 4 quadrantes a partir de um ponto central <em>pose(image.rows/2,image.cols/2)</em>.
- //trecho da criação dessas matrizes</p>
+<p>Explorando funcionalidades da biblioteca OpenCV são definidas 4 matrizes por construtores que englobam os 4 quadrantes a partir de um ponto central <em>pose(image.rows/2,image.cols/2)</em>.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>//trecho da criação dessas matrizes</pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Em seguida os valores de cada quadrante da imagem original são redefinidos em quatro 4 "for&#8217;s",cada um correspondente a um quadrante da imagem original, substituindo os valores do cada quadrante pelo valor de uma das matrizes de quadrante criados anteriormente.</p>
@@ -485,7 +494,7 @@ estas estejam coerentes. Após isso é feita a chamada da função que percorrer
 </div>
 </div>
 <div class="paragraph">
-<p>No processo de erro e aprendizado foram "descobertas" curiosamente outras duas funções de aplicação para imagem, a função espelhar() e a função multiplicar(), que são auto explicativas.</p>
+<p>No processo de erro e aprendizado foram "descobertas" curiosamente outras duas funções de aplicação para imagem, a função <em>espelhar()</em> e a função <em>multiplicar()</em>, que são auto explicativas.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -505,7 +514,7 @@ estas estejam coerentes. Após isso é feita a chamada da função que percorrer
 <p>Para essa atividade o arquivo bolhas.png foi salvo no mesmo diretório do arquivo .cpp que dita o algorítimo.</p>
 </div>
 <div class="paragraph">
-<p>O primeiro passo para a atividade foi limpar as bordas da imagem, para isso bastou varrer as bordas do quadro e verificar se haviam objetos (pixels de valores iguais 255) e aplicar a função seedfill() com cor de rotulação igual à cor de fundo(valor zero). A função limpar_borda(), responsável por essa execução, pode ser contemplada a seguir.</p>
+<p>O primeiro passo para a atividade foi limpar as bordas da imagem, para isso bastou varrer as bordas do quadro e verificar se haviam objetos (pixels de valores iguais 255) e aplicar a função <em>seedfill()</em> com cor de rotulação igual à cor de fundo(valor zero). A função <em>limpar_borda()</em>, responsável por essa execução, pode ser contemplada a seguir.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -513,10 +522,10 @@ estas estejam coerentes. Após isso é feita a chamada da função que percorrer
 </div>
 </div>
 <div class="paragraph">
-<p>Em seguida percorre-se toda a imagem linha após linha em busca de objetos (pixels de valores iguais a 255), ao se encontrar um objeto, um contador setado inicialmente em zero é incrementado em uma unidade e se aplica o seedfill() com rotulação do contador, de tal modo que ao final da varredura todas as bolhas são rotuladas com o valores do contador e o número total de bolhas é obtido através do valor final do contador.</p>
+<p>Em seguida percorre-se toda a imagem linha após linha em busca de objetos (pixels de valores iguais a 255), ao se encontrar um objeto, um contador setado inicialmente em zero é incrementado em uma unidade e se aplica o <em>seedfill()</em> com rotulação do contador, de tal modo que ao final da varredura todas as bolhas são rotuladas com o valores do contador e o número total de bolhas é obtido através do valor final do contador.</p>
 </div>
 <div class="paragraph">
-<p>A estratégia para obter o número de bolhas com buracos é ter uma configuração onde o fundo e o interior das bolhas tenham valores altos e as bolhas sejam rotuladas com o valor do número de buracos que possui, para isso são passados sucessivos "for&#8217;s" aplicando o seedfill() afim de deixar a imagem na cofiguração desejada. A configuração desejada é mostrada na tela para o usuário a cada passo.</p>
+<p>A estratégia para obter o número de bolhas com buracos é ter uma configuração onde o fundo e o interior das bolhas tenham valores altos e as bolhas sejam rotuladas com o valor do número de buracos que possui, para isso são passados sucessivos "for&#8217;s" aplicando o <em>seedfill()</em> afim de deixar a imagem na cofiguração desejada. A configuração desejada é mostrada na tela para o usuário a cada passo.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -538,7 +547,7 @@ estas estejam coerentes. Após isso é feita a chamada da função que percorrer
 <p>Esta função apresenta um certo nível de complexidade e dificuldade que merece uma atenção especial.</p>
 </div>
 <div class="paragraph">
-<p>São passadas as cordenadas x e y da posição semente, de onde se aplicará o seedfill(), essas cordenadas são salvada no objeto <em>pose c</em>, e o valor do pixel nesse ponto também é salvado na variável <em>cor_antiga</em>. Então é criado uma pilha de <em>pose</em> e acresentado o valor da posição semente.</p>
+<p>São passadas as cordenadas x e y da posição semente, de onde se aplicará o <em>seedfill()</em>, essas cordenadas são salvada no objeto <em>pose c</em>, e o valor do pixel nesse ponto também é salvado na variável <em>cor_antiga</em>. Então é criado uma pilha de <em>pose</em> e acresentado o valor da posição semente.</p>
 </div>
 <div class="paragraph">
 <p>Enquanto a pilha não estiver vazia é resgatado os valores das cordenadas do objeto <em>pose</em> que estiver no topo da pilha nas variáveis x e y, depois retirada da pilha esse mesmo objeto. Se o valor do pixel nessas cordenadas que acabaram de sair for diferente da cor que se deseja rotular então toda sua 8-vizinhaça é analisada e caso sejam considerados adjacentes os objetos <em>pose</em> com suas cordenadas serão adicionados à pilha.</p>
@@ -552,8 +561,12 @@ estas estejam coerentes. Após isso é feita a chamada da função que percorrer
 </div>
 </div>
 <div class="paragraph">
-<p>O código completo pode ser analisado abaixo.
- //código completo ou link para código.</p>
+<p>O código completo pode ser analisado abaixo.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>//código completo ou link para código.</pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Ao final do programa é exibida uma instrutiva e singela mensagem dedicada a um aleatório usuário.</p>
@@ -651,15 +664,21 @@ No exercício em questão é trabalhada a equalização de histogramas que tem p
 <p>&#8594;Sexta Atividade: Laplaciano do Gaussiano.</p>
 </div>
 <div class="paragraph">
-<p>Nos exercícios de filtragem em plano espacial são vistos como se dão o processos de filtragem utilizando "kernel&#8217;s" ou máscaras que convolucionam toda a imagem por meio da função filter2d().</p>
+<p>Nos exercícios de filtragem em plano espacial são vistos como se dão o processos de filtragem utilizando "kernel&#8217;s" ou máscaras que convolucionam toda a imagem por meio da função <em>filter2d()</em>.</p>
 </div>
 <div class="paragraph">
-<p>O código completo pode ser analisado abaixo
- //código completo ou link para código.</p>
+<p>O código completo pode ser analisado abaixo</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>//código completo ou link para código.</pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Primeiramente são definda os valores que serão utilizadas na máscara no processo de filtragem e inicialmente a máscará é preenchida com os valores de "media" e um menu é apresentado ao usuário de forma que ele escolha o tipo de máscara que deseja usar na filtragem.
-Então dentro de um loop cada quadro capturado da webcam é convertido para tons de cinza e para ponto flutuate de forma que seus valores possam ser manipulados na filtragem. A saída do progrma aprensenta duas imagens, uma original em tons d ecinza sendo capturada pela câmera webcam e outra após o resultado da filtragem.</p>
+<p>Primeiramente são definda os valores que serão utilizadas na máscara no processo de filtragem, e inicialmente a máscara é preenchida com os valores de "media", em seguida um menu é apresentado ao usuário de forma que ele escolha o tipo de máscara que deseja usar na filtragem.</p>
+</div>
+<div class="paragraph">
+<p>Então dentro de um loop cada quadro capturado da webcam é convertido para tons de cinza e ponto flutuate, de forma que seus valores possam ser manipulados na filtragem. A saída do progrma aprensenta duas imagens, uma original em tons de cinza sendo capturada pela câmera webcam e outra após o resultado da filtragem.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -667,7 +686,7 @@ Então dentro de um loop cada quadro capturado da webcam é convertido para tons
 </div>
 </div>
 <div class="paragraph">
-<p>Dependendo da opção do usuário uma nova imagem filtrada é exibida ao lado da original com um novo resultado, caso a opção "esc" seja selecionada a exibição cessa e o programa pode ser finalizado; caso a opção x seja selecionada um filtro "lapgauss" é utilizado no processo de filtragem e um outro filtro gauss é passado à imagem já filtrada com fins de amenizar o ruido resultante da primeira filtragem.</p>
+<p>Dependendo da opção do usuário uma nova imagem filtrada é exibida ao lado da original com um novo resultado, caso a opção "esc" seja selecionada a exibição cessa e o programa pode ser finalizado; caso a opção "x" seja selecionada um filtro "lapgauss" é utilizado no processo de filtragem e um outro filtro gauss é passado à imagem já filtrada com fins de amenizar o ruido resultante da primeira filtragem.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -675,37 +694,54 @@ Então dentro de um loop cada quadro capturado da webcam é convertido para tons
 </div>
 </div>
 <div class="paragraph">
+<p>A saída do programa fica com o filtro lapgauss é representada abaixo.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>//imagem com saída do programa.</pre>
+</div>
+</div>
+<div class="paragraph">
 <p>&#8594;Sétima Atividade: Tilt-Shift.</p>
 </div>
 <div class="paragraph">
-<p>Essa foi sem dúvida a atividade que mais exigiu conhecimento agregado além de acrestar novos elementos ao estudo do processamento de imagens. Esta atividade teve o objetivo de reproduzir o efeito gerado por algumas lentes mais sofisticadas que desfocam certa região da imagem nas bordas superiores e inferiores e mantém a região de interesse focada, com esse efeito é possível criar sensações interessantes como a miniaturização de paisagen urbanas de forma bem interessante.</p>
+<p>Essa foi sem dúvida a atividade que mais exigiu conhecimento agregado além de acrescentar novos elementos ao estudo do processamento de imagens. Esta atividade teve o objetivo de reproduzir o efeito gerado por algumas lentes mais sofisticadas que desfocam certa região da imagem nas bordas superiores e inferiores e mantém a região de interesse focada, com esse efeito é possível criar sensações interessantes como a miniaturização de paisagens urbanas de forma bem inusitada.</p>
 </div>
 <div class="paragraph">
-<p>O código completo pode ser analisado abaixo para compilar esse código salve uma imagem de nome qualquer na mesma pasta que o arquivo cpp e modifique o nome etre aspas no imread para o nome salvo da sua imagem.
- //código completo ou link para código.</p>
+<p>O código completo pode ser analisado abaixo. Para compilar esse código salve uma imagem de nome qualquer na mesma pasta que o arquivo .cpp e modifique o nome entre aspas no imread para o nome da sua imagem. No exemplo em quaestão foi usado a imagem "teste1.jpg"</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>//código completo ou link para código.</pre>
+</div>
 </div>
 <div class="paragraph">
-<p>O programa inciamente abre uma imagem (imagemBruta) e cria duas outras imagens(imagemOriginal e imagem Borrada) que serão usadas no processo, ambas convertidas para ponto flutuante de forma a serem trabalhadas nas manipulações matemáticas. É passado um longo processo de borramento para a imagemBorrada afim de que ela faça justiça ao seu nome, então cada imagem é convertida para o sistema HSV e dividida por meio de slipt em 3 canais, duas vezes, para que sejam usadas posteriormente na função multiply().</p>
+<p>O programa incialmente abre uma imagem (imagemBruta) e cria duas outras imagens(imagemOriginal e imagem Borrada) que serão usadas no processo, ambas convertidas para ponto flutuante de forma a serem trabalhadas nas manipulações matemáticas. É então passado um longo processo de borramento para a imagemBorrada afim de que ela faça justiça ao seu nome, em seguida cada imagem é convertida para o sistema HSV e dividida por meio de slipt em 3 canais, duas vezes, para que sejam usadas posteriormente na função <em>multiply()</em>.</p>
 </div>
 <div class="paragraph">
-<p>Agora é introduzido uma nova funcionalidade biblioteca OpenCv o creatTrackbar que gera um slide modificando valores setados anteriormente, esses slides modificadores de valores serão úteis na posterior função adicaoponderada que irá somar duas imagens multiplicadas por um ganho, cada uma delas, essa multiplicação se dá por meio da função multiply e esse ganho que cada imagem irá receber se dá devido a função "beta= (tanhx-(central-limit/decaimento)-tanhx-(central+limit/decaimento))/2;" que tem todos os seus parâmetros (central,limit,decaimento) regulado através dos slides criados. Esssa função é gera uma matriz (image1) com linhas equivalentes a cada valor adimitido pela função por linha, resultando numa matriz em degrade partindo de um valor zero assumindo um valor máximo e retornando à um valor zero novamente conforme pode ser visto na imagem abaixo.</p>
+<p>Agora é introduzido uma nova funcionalidade biblioteca OpenCv o <em>creatTrackbar</em> que gera um slide modificando valores de variáveis setadas anteriormente, esses slides modificadores de valores serão úteis na posterior função <em>adicaoponderada()</em> que irá somar duas imagens multiplicadas por um ganho, cada uma delas; essa multiplicação se dá por meio da função <em>multiply()</em> e esse ganho que cada imagem irá receber se dá devido a função <em>*"beta= (tanhx-(central-limit/decaimento)-tanhx-(central+limit/decaimento))/2;"*</em> que tem todos os seus parâmetros (central,limit,decaimento) regulados através dos slides criados. Esssa função gera uma matriz (image1) com linhas equivalentes a cada valor adimitido pela função por linha "x", resultando numa matriz em degradê partindo de um valor zero, assumindo um valor máximo e retornando à um valor zero novamente conforme pode ser visto na imagem abaixo.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>// imagem em degradê e seu negativo</pre>
+</div>
 </div>
 <div class="paragraph">
 <p>O parâmtero "central" define a altura da linha de onde a função assumirá seu valor máximo (igual à 1), o parâmetro "limit" define a abertura a partir da altura selecionada por "central" em que os valores serão próximos ou iguais ao valor máximo, e o parâmetro "decaimento" estabelece o quão gradativo se dá a mudança da linha de menor valor para a linha de maior valor.</p>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre>//matriz em degradê</pre>
-</div>
-</div>
 <div class="paragraph">
-<p>Esssa matriz em degradê é multiplicada, com o multiply(), então com o canal da imagemOriginal (em HSV) correspondente à intesidade luminosa e o inverso dessa mesma matriz (a image2) é multiplicado com o canal da imagemBorrada (em HSV) correspondente à intesidade luminosa também. Então ambos os resultados são mesclados novamente com o merge e ambas as imagens são convertidas para RGB novamente.</p>
+<p>Tal matriz em degradê é multiplicada, com o <em>multiply()</em>, com o canal da imagemOriginal (em HSV) correspondente à intesidade luminosa e o inverso dessa mesma matriz (a image2) é multiplicado com o canal da imagemBorrada (em HSV) correspondente à intesidade luminosa também. Então ambos os resultados são mesclados novamente com o merge e ambas as imagens são convertidas para RGB novamente.</p>
 </div>
 <div class="paragraph">
 <p>Depois disto uma nova imagem é criada a partir da soma dessas duas imagens multiplicadas, sendo resultado de uma combinação linear da imagemBorrada com a imagemOriginal.</p>
 </div>
 <div class="paragraph">
-<p>Para finalizar o efeito de miniaturização é necessário dar mais saturização à imagem e para isso a convertemos para HSV novamente e convertemos o canal da saturação (o segundo canal - [1]) para um novo valor de acordo com o slide setado para "saturacao".</p>
+<p>Para finalizar o efeito de miniaturização é necessário dar mais saturação à imagem e para isso a convertemos para HSV novamente e convertemos o canal da saturação (o segundo canal - [1]) para um novo valor de acordo com o slide setado para "saturacao".</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>//trecho que munda a saturação</pre>
+</div>
 </div>
 <div class="paragraph">
 <p>A imagem é então vista na mesma janela de vizualição dos slides para que possa ser acompanhada todas as alterações simultânemente as alterações nos slides.</p>
@@ -713,10 +749,15 @@ Então dentro de um loop cada quadro capturado da webcam é convertido para tons
 <div class="paragraph">
 <p>Por fim uma mensagem aleatória de reflexão aleatória é enviada a um aleatório usuário.</p>
 </div>
+<div class="literalblock">
+<div class="content">
+<pre>//trecho da mensagem.</pre>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-09-22 15:47:34 BRT
+Last updated 2016-09-22 16:36:24 BRT
 </div>
 </div>
 </body>
