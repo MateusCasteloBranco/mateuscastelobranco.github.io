@@ -425,22 +425,30 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><mark><mark>Manipulção de Pixels</mark></mark></p>
 </div>
 <div class="paragraph">
-<p>&#8594;Primeira Atividade: Ivertendo Cores.</p>
+<p>&#8594;Primeira Atividade: Invertendo Cores.</p>
 </div>
 <div class="paragraph">
-<p>A primeira ativiade corresponde à manipulação de pixels emmuma imagem em tons de cinza na qual consiste em alterar o valor do pixel para o seu inverso, tal procedimento pode ser realizado subtraindo do valor máximo do pixel(no caso para unsigned char = 255) menos o seu valor.</p>
+<p>A primeira ativiade corresponde à manipulação de pixels em uma imagem em tons de cinza na qual consiste em alterar o valor do pixel para o seu inverso, tal procedimento pode ser realizado subtraindo do valor máximo do pixel(no caso para unsigned char = 255) menos o seu valor atual.</p>
 </div>
 <div class="paragraph">
-<p>Para implementação desse código foi criada a class pose que define o valor de uma cordenada.
- //exibir trecho do código com a clase pose//</p>
+<p>Para implementação desse código foi criada a class pose que define o valor de uma cordenada.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>//exibir trecho do código com a clase pose//</pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Essa cordenada pose será levada em consideração na hora de definirmos um subquadro ou região de interesse dentro da imagem trabalhada. Então o usuário é convidado a digitar  as cordenadas do canto superior esquerdo e do canto inferior direito do subquadro onde a imagem passará pelo processo de inversão.
- //trecho do código com o cout//</p>
+<p>Essa cordenada pose será levada em consideração na hora de definirmos um subquadro ou região de interesse dentro da imagem trabalhada. Então o usuário é convidado a digitar  as cordenadas do canto superior esquerdo e do canto inferior direito do subquadro onde a imagem passará pelo processo de inversão.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>//trecho do código com o cout//</pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Caso o usuário seja obtuso e passe cordenadas inválidas uma menssagem carinhosa o convida a repetir os valores das cordenadas até que
-estas estejam coerentes. Após isso é feita a chamada da função que percorrerá na imagem a região definida pelas duas cordenadas e re- definirá o valor dos pixels presentes no subquadro;</p>
+<p>Caso o usuário seja obtuso e passe cordenadas inválidas uma menssagem carinhosa o convida a repetir os valores das cordenadas, até que
+estas estejam coerentes. Após isso é feita a chamada da função que percorrerá na imagem a região definida pelas duas cordenadas e redefinirá os valores dos pixels presentes no subquadro;</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -448,8 +456,12 @@ estas estejam coerentes. Após isso é feita a chamada da função que percorrer
 </div>
 </div>
 <div class="paragraph">
-<p>O código completo pode ser analisado abaixo
- //código completo ou link para código.</p>
+<p>O código completo pode ser analisado abaixo.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>//código completo ou link para código.</pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Ao final do programa é exibida uma instrutiva e singela mensagem dedicada a um aleatório usuário.</p>
@@ -458,16 +470,27 @@ estas estejam coerentes. Após isso é feita a chamada da função que percorrer
 <p>&#8594;Segunda Atividade: Deslocando Regiões.</p>
 </div>
 <div class="paragraph">
-<p>A segunda atividade ainda diz respeito à manipulção de pixels dentro de um quadro de imagens e também conta com o uso da classe pose, porém tem por objetivo modificar os valores de certos pontos da imagem por outros valores de pontos também dentro da imagem, de forma a produzir um efeito de deslocamento de certas regiões da imagem, produzindo um efeito de "quebra-cabeças" em especial invertendo o primeiro quadrante com o terceiro e o segundo quadrante com quarto.</p>
+<p>A segunda atividade ainda diz respeito à manipulção de pixels dentro de um quadro de imagem e também conta com o uso da classe <em>pose</em>, porém tem por objetivo modificar os valores de certos pontos da imagem por outros valores de pontos também dentro da imagem, de forma a produzir um efeito de deslocamento de certas regiões da imagem, produzindo um efeito de "quebra-cabeças" em especial invertendo o primeiro quadrante com o terceiro e o segundo quadrante com quarto.</p>
 </div>
 <div class="paragraph">
-<p>Explorando funcionalidades da biblioteca OpenCV são definidas 4 matrizes por construtores que englobam os 4 quadrantes a partir de um ponto central pose(image.rows/2,image.cols/2).</p>
+<p>Explorando funcionalidades da biblioteca OpenCV são definidas 4 matrizes por construtores que englobam os 4 quadrantes a partir de um ponto central <em>pose(image.rows/2,image.cols/2)</em>.
+ //trecho da criação dessas matrizes</p>
 </div>
 <div class="paragraph">
 <p>Em seguida os valores de cada quadrante da imagem original são redefinidos em quatro 4 "for&#8217;s",cada um correspondente a um quadrante da imagem original, substituindo os valores do cada quadrante pelo valor de uma das matrizes de quadrante criados anteriormente.</p>
 </div>
+<div class="literalblock">
+<div class="content">
+<pre>//trecho dos fors</pre>
+</div>
+</div>
 <div class="paragraph">
 <p>No processo de erro e aprendizado foram "descobertas" curiosamente outras duas funções de aplicação para imagem, a função espelhar() e a função multiplicar(), que são auto explicativas.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>//apresentação de ambas as funções.</pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Ao final do programa é exibida uma instrutiva e singela mensagem dedicada a um aleatório usuário.</p>
@@ -476,17 +499,24 @@ estas estejam coerentes. Após isso é feita a chamada da função que percorrer
 <p>&#8594;Terceira Atividade: Rotulação de Imagens.</p>
 </div>
 <div class="paragraph">
-<p>Finalizando as explorações de manipulação de pixels na terceira atividade são contemplados também os conceitos de rotulação em imagens e adjacências.</p>
+<p>Além de finalizar o conceito de exploração de manipulação de pixels, na terceira atividade são contemplados também os conceitos de rotulação em imagens e adjacências.</p>
 </div>
 <div class="paragraph">
-<p>O primeiro passo para a atividade foi limpar as bordas da imagem, para isso basta varrer as bordas do quadro e verificar se há objetos (pixels de valor=255) e aplicar a função seedfill() com cor de rotulação igual à cor de fundo(valor zero). A função limpar borda pode ser contemplada a seguir.
- //função limpar borda</p>
+<p>Para essa atividade o arquivo bolhas.png foi salvo no mesmo diretório do arquivo .cpp que dita o algorítimo.</p>
 </div>
 <div class="paragraph">
-<p>Em seguida percorre-se toda a imagem linha após linha em busca de objetos (pixels de valor=255), ao se encontrar um objeto, um contador setado inicialmente em zero é incrementado em uma unidade e se aplica o seedfill() com rotulação do contador, de tal modo que ao final da varredura todas as bolhas são rotuladas com o valor dos contadores e o número total de bolhas é obtido através do contador final.</p>
+<p>O primeiro passo para a atividade foi limpar as bordas da imagem, para isso bastou varrer as bordas do quadro e verificar se haviam objetos (pixels de valores iguais 255) e aplicar a função seedfill() com cor de rotulação igual à cor de fundo(valor zero). A função limpar_borda(), responsável por essa execução, pode ser contemplada a seguir.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>//função limpar borda</pre>
+</div>
 </div>
 <div class="paragraph">
-<p>A estratégia para obter o número de bolhas com buracos é ter uma configuração onde o fundo e o interior da bolhas tenham valores altos e as bolhas sejam rotuladas com o valor do número de buracos que possui, para isso são passados sucessivos "for&#8217;s" aplicando o seedfill() afim de deixar a imagem na cofiguração desejada. A configuração desejada é mostrada na tela para o usuário.</p>
+<p>Em seguida percorre-se toda a imagem linha após linha em busca de objetos (pixels de valores iguais a 255), ao se encontrar um objeto, um contador setado inicialmente em zero é incrementado em uma unidade e se aplica o seedfill() com rotulação do contador, de tal modo que ao final da varredura todas as bolhas são rotuladas com o valores do contador e o número total de bolhas é obtido através do valor final do contador.</p>
+</div>
+<div class="paragraph">
+<p>A estratégia para obter o número de bolhas com buracos é ter uma configuração onde o fundo e o interior das bolhas tenham valores altos e as bolhas sejam rotuladas com o valor do número de buracos que possui, para isso são passados sucessivos "for&#8217;s" aplicando o seedfill() afim de deixar a imagem na cofiguração desejada. A configuração desejada é mostrada na tela para o usuário a cada passo.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -505,16 +535,16 @@ estas estejam coerentes. Após isso é feita a chamada da função que percorrer
 <p>&#8594;A função seedfill()</p>
 </div>
 <div class="paragraph">
-<p>Esta função apresenta um certo nível d complexidade e dificuldade que merece uma atenção especial.</p>
+<p>Esta função apresenta um certo nível de complexidade e dificuldade que merece uma atenção especial.</p>
 </div>
 <div class="paragraph">
-<p>São passadas as cordenadas x e y da posição semente, de onde se aplicará o seedfill(), essas posições são salvada no objeto pose c, e o valor do pixel nesse ponto também é salvado na variável cor_antiga. Então é criado uma pilha de posições e acresentado o valor da posição semente.</p>
+<p>São passadas as cordenadas x e y da posição semente, de onde se aplicará o seedfill(), essas cordenadas são salvada no objeto <em>pose c</em>, e o valor do pixel nesse ponto também é salvado na variável <em>cor_antiga</em>. Então é criado uma pilha de <em>pose</em> e acresentado o valor da posição semente.</p>
 </div>
 <div class="paragraph">
-<p>Enquanto a pilha não estiver vazia é resgatado os valores das cordenadas do objeto pose que estiver no topo da pilha nas variáveis x e y e depois retirada esse mesmo objeto. Seo valor do pixel nessas cordenadas que acabaram de sair for diferente da cor que se deseja rotular então toda sua 8-vizinhaça é analisada e caso tenham o mesmo valor do pixel contido nessa mesma posição então são adicionadas à pilha.</p>
+<p>Enquanto a pilha não estiver vazia é resgatado os valores das cordenadas do objeto <em>pose</em> que estiver no topo da pilha nas variáveis x e y, depois retirada da pilha esse mesmo objeto. Se o valor do pixel nessas cordenadas que acabaram de sair for diferente da cor que se deseja rotular então toda sua 8-vizinhaça é analisada e caso sejam considerados adjacentes os objetos <em>pose</em> com suas cordenadas serão adicionados à pilha.</p>
 </div>
 <div class="paragraph">
-<p>Ao final da análise da vizinhaça o valor do pixel o qual teve sua vizinhaça analasida é então modificada para o valor do rótulo. Vale lembrar que alguns "if&#8217;s" adicionais são necessários para que não sejam adicionados à pilha de posições cordenadas que sejam menores que zero ou que sejam maisores que os limites do quadro.</p>
+<p>Ao final da análise da vizinhaça o valor do pixel o qual teve sua vizinhaça analisada é então modificada para o valor do rótulo. Vale lembrar que alguns "if&#8217;s" adicionais são necessários para que não sejam adicionados à pilha de <em>pose&#8217;s</em> <em>pose&#8217;s</em> com cordenadas que sejam menores que zero ou que sejam maiores que os limites do quadro.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -522,11 +552,16 @@ estas estejam coerentes. Após isso é feita a chamada da função que percorrer
 </div>
 </div>
 <div class="paragraph">
-<p>O código completo pode ser analisado abaixo. Para compilar esse código salve a imagem bolhas na mesma pasta que o arquivo .cpp.
+<p>O código completo pode ser analisado abaixo.
  //código completo ou link para código.</p>
 </div>
 <div class="paragraph">
 <p>Ao final do programa é exibida uma instrutiva e singela mensagem dedicada a um aleatório usuário.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>//trecho da mensagem.</pre>
+</div>
 </div>
 <div class="paragraph">
 <p><mark><mark>Histogramas de Imagens</mark></mark></p>
@@ -535,17 +570,22 @@ estas estejam coerentes. Após isso é feita a chamada da função que percorrer
 <p>&#8594;Quarta Atividade: Equalização de Histogramas.</p>
 </div>
 <div class="paragraph">
-<p>A partir desse ponto começam a ser estudadas as nuances do histogram de imagens e algumas de suas aplicações e fins práticos.
-No exercício é questão é trabalhada a equalização de histogramas que tem por objetivo deixar as imgagens com maior contraste de iluminação. Foi explorado também nessa atividade novas funcionalidades da biblioteca OpenCv como a separação de canais múltiploes é vários canais singulares bem como a sua operação inversa através das funções split() e merge() sucessivamente.</p>
+<p>A partir desse ponto começam a ser estudadas as nuances do quem vem a ser o histograma de uma imagem e algumas de suas aplicações e fins práticos.
+No exercício em questão é trabalhada a equalização de histogramas que tem por objetivo deixar as imgagens com maior contraste de iluminação. Foi explorado nessa atividade novas funcionalidades da biblioteca OpenCv como a separação de canais múltiplos em outros canais singulares bem como a sua operação inversa através das funções <em>split()</em> e <em>merge()</em> respctivamente.</p>
 </div>
 <div class="paragraph">
-<p>Também foi introduzido aqui aspectos sobre a captura de vídeo disponibilizada pela biblioteca OpenCv assim foi possível fazer a equalização da imagem obtida pela captura de imagens da webcam do usuário.</p>
+<p>Também foi introduzido aqui, aspectos sobre a captura de vídeo disponibilizada pela biblioteca OpenCv, assim foi possível fazer a equalização da imagem obtida pela captura de imagens da webcam do usuário.</p>
 </div>
 <div class="paragraph">
-<p>Assim a imgagem da câmera é capturada em um loop e por ser RGB é dividida em 3 canais correspondente a cada matriz R, G e B, de tal forma que a a partir da função calcHist() é possível obter o histograma de cada canal singular e normalizá-los por meio da função normalize(), então é desenhada na tela de captura 3 barras correspondentes ao histograma de cada quantidade R,G e B, e o resultado final é mostrado na tela indicando a distribuição de intesidade para cada cor para o usuário no canto superior esquerdo da imagem.</p>
+<p>Em sítese a imgagem da câmera é capturada em um loop e por ser RGB é dividida em 3 canais correspondente a cada matriz R, G e B, de tal forma que a a partir da função calcHist() é possível obter o histograma de cada canal singular e normalizá-los por meio da função normalize(), então é desenhada na tela de captura 3 barras correspondentes ao histograma de cada quantidade R,G e B, e o resultado final é mostrado na tela indicando a distribuição de intesidade para cada cor para o usuário no canto superior esquerdo da imagem.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>//trecho do código que faz isso</pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Este processo é útil apenas para o cálculo e apresentação do histograma de cada cor, entretanto desejamos equalizar o histograma referente a intesidade das cores na imagem, para isso é necessário converter a imagem para um sistema de cor que a separe num canal exclusivo para a intensidade luminosa, tais como o sistema HSV,HSL,YCbCr,YUV entre outros dos quasis escolhemos o sistema YUV o separamos em três canais Y, U e V e equalizamos o primeiro canal(o canal Y referente a intesidade luminosados pixels) por meio da função equaliseHist(), mesclamos os canais de volta e o convertemos de volta ao sistema RGB, então o processo de cáculo de histograma e normalização é novamente executado, mas agora com uma imagem de contrastes mais realçados e ao final é exibida em outra janela a imagem equalizada com uma nova barra de cores correspondente ao histograma de R,G e B da imagem de luminosidade equalizada.</p>
+<p>Este processo é útil apenas para o cálculo e apresentação do histograma de cada cor, entretanto desejamos equalizar o histograma referente a intesidade das cores na imagem, para isso é necessário converter a imagem para um sistema de cor que a separe num canal exclusivo para a intensidade luminosa, tais como os sistemas HSV,HSL,YCbCr, ou YUV, este último sendo o escolhido no exemplo para ser separado em três canais Y, U e V. Em seguida equalizamos somente o primeiro canal(o canal Y referente à matriz de intesidade luminosa dos pixels) por meio da função <em>equaliseHist()</em>, mesclamos os canais de volta (usando <em>merge()</em>) e o convertemos de volta ao sistema RGB, então o processo de cáculo de histograma e normalização é novamente executado, mas agora com uma imagem de contrastes mais realçados, e ao final é exibida em outra janela a imagem equalizada com uma nova barra de cores correspondente ao histograma de R,G e B da imagem de luminosidade equalizada.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -556,21 +596,29 @@ No exercício é questão é trabalhada a equalização de histogramas que tem p
 <p>Após um comando de tecla a exibição é finalizada.</p>
 </div>
 <div class="paragraph">
-<p>O código completo pode ser analisado abaixo
- //código completo ou link para código.</p>
+<p>O código completo pode ser analisado abaixo</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>//código completo ou link para código.</pre>
+</div>
 </div>
 <div class="paragraph">
 <p>&#8594;Quinta Atividade: Detector de Movimento.</p>
 </div>
 <div class="paragraph">
-<p>Na quinta atividade foi explorada uma outra interessante aplicação do histograma de imagens e outras novas funções da Biblioteca OpenCv. Foi possível através do cáculo do histograma de imagem identificar a movimentação ocorrida na imagem.</p>
+<p>Na quinta atividade foi explorada uma outra interessante aplicação do histograma de imagem e outras novas funções da Biblioteca OpenCv. Foi possível através do cáculo do histograma de imagem identificar a movimentação ocorrida na imagem.</p>
 </div>
 <div class="paragraph">
-<p>O código completo pode ser analisado abaixo
- //código completo ou link para código.</p>
+<p>O código completo pode ser analisado abaixo</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>//código completo ou link para código.</pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Também em loop, tal como na atividade anterior cada quadro é capturado e seu histograma é calculado, desta vez convetermos a imagem para tons de cinza para que se torna-se um canal singular  sem a necessidade de split e merge.</p>
+<p>Também em loop, tal como na atividade anterior cada quadro é capturado e seu histograma é calculado, desta vez convetermos a imagem para tons de cinza para que se torna-se um canal singular  sem a necessidade de <em>split()</em> e merge()_.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -578,7 +626,7 @@ No exercício é questão é trabalhada a equalização de histogramas que tem p
 </div>
 </div>
 <div class="paragraph">
-<p>Então um segunda captura é feita dentro do mesmo loop a fim de calcular um segundo quadro posterior ao primeiro e e calcular também o seu histograma. Após isto é comparado o histograma de cada quadro obtido por meio da função compareHist() o qual retorna um valor da distância entre os dois vetores de histogramas calculados previamente.</p>
+<p>Então um segunda captura é feita dentro do mesmo loop a fim de calcular um segundo quadro posterior ao primeiro e e calcular também o seu histograma. Após isto, é comparado o histograma dos dois quadros obtidos por meio da função compareHist(), o qual retorna um valor da distância entre os dois vetores de histogramas calculados previamente.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -589,7 +637,7 @@ No exercício é questão é trabalhada a equalização de histogramas que tem p
 <p>O método para o cálculo desta distância é definido pelo argumento CV_COMP_BHATTACHARYYA e pode variar de acordo com a aplicação desejada.</p>
 </div>
 <div class="paragraph">
-<p>Assim se essa distância assumir um valor predefinido como alto o sulficiente é detectado uma movimentação na imagem e uma menssagem de alerta é mostrado, caso esse valor de distância não seja alto o suficiente é considerado que os elementos da imagens estão parados, então a sensibilidade do sensor se dá através do quão alto é definida esse valor para indicar movimento ou não. No exemplo em quastão o valor adotado foi de 0.011.</p>
+<p>Assim se essa distância assumir um valor predefinido como alto o sulficiente é detectado uma movimentação na imagem e uma menssagem de alerta é mostrado, caso esse valor de distância não seja alto o suficiente é considerado que os elementos da imagens estão parados, ou seja, a sensibilidade do sensor se dá através do quão alto é definido esse valor para indicar movimento ou não. No exemplo em questão o valor adotado foi de 0.011.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -668,7 +716,7 @@ Então dentro de um loop cada quadro capturado da webcam é convertido para tons
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-09-22 13:31:11 BRT
+Last updated 2016-09-22 15:47:34 BRT
 </div>
 </div>
 </body>
