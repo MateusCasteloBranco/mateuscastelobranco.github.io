@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.4">
-<title>Untitled</title>
+<title>Processamento Digital de Imagens</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -416,17 +416,53 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
+<style>
+/* Pygments styles disabled. Pygments is not available. */
+</style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
+<h1>Processamento Digital de Imagens</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_introdução">1. Introdução</a></li>
+<li><a href="#_manipulção_de_pixels">2. Manipulção de Pixels</a>
+<ul class="sectlevel2">
+<li><a href="#_primeira_atividade_invertendo_cores">2.1. Primeira Atividade: Invertendo Cores.</a></li>
+<li><a href="#_segunda_atividade_deslocando_regiões">2.2. Segunda Atividade: Deslocando Regiões.</a></li>
+<li><a href="#_terceira_atividade_rotulação_de_imagens">2.3. Terceira Atividade: Rotulação de Imagens.</a></li>
+</ul>
+</li>
+<li><a href="#_histogramas_de_imagens">3. Histogramas de Imagens</a>
+<ul class="sectlevel2">
+<li><a href="#_quarta_atividade_equalização_de_histogramas">3.1. Quarta Atividade: Equalização de Histogramas.</a></li>
+<li><a href="#_quinta_atividade_detector_de_movimento">3.2. Quinta Atividade: Detector de Movimento.</a></li>
+</ul>
+</li>
+<li><a href="#_filtragem_em_plano_espacial">4. Filtragem em Plano Espacial</a>
+<ul class="sectlevel2">
+<li><a href="#_sexta_atividade_laplaciano_do_gaussiano">4.1. Sexta Atividade: Laplaciano do Gaussiano.</a></li>
+<li><a href="#_sétima_atividade_tilt_shift">4.2. Sétima Atividade: Tilt-Shift.</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 <div id="content">
+<div class="sect1">
+<h2 id="_introdução">1. Introdução</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p><mark><mark>Manipulção de Pixels</mark></mark></p>
+<p>Esta página foi criada com o fim de apresentção e explicação de códigos desenvolvidos pelo autor da página e aluno de graduação em Engenharia Elétrica, Mateus Castelo Branco, lançados como exercícios na disciplina de Processamento Digital de Imagens. Os códigos aqui gerados são regidos pela liguagem em C++ utilizados elementos da biblioteca OpenCV, de forma à aprofundar o conhecimento do aluno nessas duas àreas além da manipulação de textos em asciidoc para implementação e exibição desta página.</p>
 </div>
-<div class="paragraph">
-<p>&#8594;Primeira Atividade: Invertendo Cores.</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="_manipulção_de_pixels">2. Manipulção de Pixels</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_primeira_atividade_invertendo_cores">2.1. Primeira Atividade: Invertendo Cores.</h3>
 <div class="paragraph">
 <p>A primeira ativiade corresponde à manipulação de pixels em uma imagem em tons de cinza na qual consiste em alterar o valor do pixel para o seu inverso, tal procedimento pode ser realizado subtraindo do valor máximo do pixel(no caso para unsigned char = 255) menos o seu valor atual.</p>
 </div>
@@ -460,7 +496,11 @@ estas estejam coerentes. Após isso é feita a chamada da função que percorrer
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>//código completo ou link para código.</pre>
+<pre>.regions.cpp
+[source,cpp]
+----
+include::regions.cpp[]
+----</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -471,9 +511,9 @@ estas estejam coerentes. Após isso é feita a chamada da função que percorrer
 <pre>//trecho do cout</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>&#8594;Segunda Atividade: Deslocando Regiões.</p>
 </div>
+<div class="sect2">
+<h3 id="_segunda_atividade_deslocando_regiões">2.2. Segunda Atividade: Deslocando Regiões.</h3>
 <div class="paragraph">
 <p>A segunda atividade ainda diz respeito à manipulção de pixels dentro de um quadro de imagem e também conta com o uso da classe <em>pose</em>, porém tem por objetivo modificar os valores de certos pontos da imagem por outros valores de pontos também dentro da imagem, de forma a produzir um efeito de deslocamento de certas regiões da imagem, produzindo um efeito de "quebra-cabeças" em especial invertendo o primeiro quadrante com o terceiro e o segundo quadrante com quarto.</p>
 </div>
@@ -504,9 +544,9 @@ estas estejam coerentes. Após isso é feita a chamada da função que percorrer
 <div class="paragraph">
 <p>Ao final do programa é exibida uma instrutiva e singela mensagem dedicada a um aleatório usuário.</p>
 </div>
-<div class="paragraph">
-<p>&#8594;Terceira Atividade: Rotulação de Imagens.</p>
 </div>
+<div class="sect2">
+<h3 id="_terceira_atividade_rotulação_de_imagens">2.3. Terceira Atividade: Rotulação de Imagens.</h3>
 <div class="paragraph">
 <p>Além de finalizar o conceito de exploração de manipulação de pixels, na terceira atividade são contemplados também os conceitos de rotulação em imagens e adjacências.</p>
 </div>
@@ -540,9 +580,8 @@ estas estejam coerentes. Após isso é feita a chamada da função que percorrer
 <pre>//trecho das perguntas</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>&#8594;A função seedfill()</p>
-</div>
+<div class="sect3">
+<h4 id="_a_função_seedfill">2.3.1. A função seedfill()</h4>
 <div class="paragraph">
 <p>Esta função apresenta um certo nível de complexidade e dificuldade que merece uma atenção especial.</p>
 </div>
@@ -576,12 +615,15 @@ estas estejam coerentes. Após isso é feita a chamada da função que percorrer
 <pre>//trecho da mensagem.</pre>
 </div>
 </div>
-<div class="paragraph">
-<p><mark><mark>Histogramas de Imagens</mark></mark></p>
 </div>
-<div class="paragraph">
-<p>&#8594;Quarta Atividade: Equalização de Histogramas.</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_histogramas_de_imagens">3. Histogramas de Imagens</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_quarta_atividade_equalização_de_histogramas">3.1. Quarta Atividade: Equalização de Histogramas.</h3>
 <div class="paragraph">
 <p>A partir desse ponto começam a ser estudadas as nuances do quem vem a ser o histograma de uma imagem e algumas de suas aplicações e fins práticos.
 No exercício em questão é trabalhada a equalização de histogramas que tem por objetivo deixar as imgagens com maior contraste de iluminação. Foi explorado nessa atividade novas funcionalidades da biblioteca OpenCv como a separação de canais múltiplos em outros canais singulares bem como a sua operação inversa através das funções <em>split()</em> e <em>merge()</em> respctivamente.</p>
@@ -616,9 +658,9 @@ No exercício em questão é trabalhada a equalização de histogramas que tem p
 <pre>//código completo ou link para código.</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>&#8594;Quinta Atividade: Detector de Movimento.</p>
 </div>
+<div class="sect2">
+<h3 id="_quinta_atividade_detector_de_movimento">3.2. Quinta Atividade: Detector de Movimento.</h3>
 <div class="paragraph">
 <p>Na quinta atividade foi explorada uma outra interessante aplicação do histograma de imagem e outras novas funções da Biblioteca OpenCv. Foi possível através do cáculo do histograma de imagem identificar a movimentação ocorrida na imagem.</p>
 </div>
@@ -657,12 +699,14 @@ No exercício em questão é trabalhada a equalização de histogramas que tem p
 <pre>//trecho do código</pre>
 </div>
 </div>
-<div class="paragraph">
-<p><mark><mark>Filtragem em Plano Espacial</mark></mark></p>
 </div>
-<div class="paragraph">
-<p>&#8594;Sexta Atividade: Laplaciano do Gaussiano.</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="_filtragem_em_plano_espacial">4. Filtragem em Plano Espacial</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_sexta_atividade_laplaciano_do_gaussiano">4.1. Sexta Atividade: Laplaciano do Gaussiano.</h3>
 <div class="paragraph">
 <p>Nos exercícios de filtragem em plano espacial são vistos como se dão o processos de filtragem utilizando "kernel&#8217;s" ou máscaras que convolucionam toda a imagem por meio da função <em>filter2d()</em>.</p>
 </div>
@@ -701,9 +745,9 @@ No exercício em questão é trabalhada a equalização de histogramas que tem p
 <pre>//imagem com saída do programa.</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>&#8594;Sétima Atividade: Tilt-Shift.</p>
 </div>
+<div class="sect2">
+<h3 id="_sétima_atividade_tilt_shift">4.2. Sétima Atividade: Tilt-Shift.</h3>
 <div class="paragraph">
 <p>Essa foi sem dúvida a atividade que mais exigiu conhecimento agregado além de acrescentar novos elementos ao estudo do processamento de imagens. Esta atividade teve o objetivo de reproduzir o efeito gerado por algumas lentes mais sofisticadas que desfocam certa região da imagem nas bordas superiores e inferiores e mantém a região de interesse focada, com esse efeito é possível criar sensações interessantes como a miniaturização de paisagens urbanas de forma bem inusitada.</p>
 </div>
@@ -755,10 +799,29 @@ No exercício em questão é trabalhada a equalização de histogramas que tem p
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-09-22 16:36:24 BRT
+Last updated 2016-09-22 17:22:42 BRT
 </div>
 </div>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  messageStyle: "none",
+  tex2jax: {
+    inlineMath: [["\\(", "\\)"]],
+    displayMath: [["\\[", "\\]"]],
+    ignoreClass: "nostem|nolatexmath"
+  },
+  asciimath2jax: {
+    delimiters: [["\\$", "\\$"]],
+    ignoreClass: "nostem|noasciimath"
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.6.0/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
 </body>
 </html>
