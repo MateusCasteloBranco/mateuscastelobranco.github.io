@@ -514,7 +514,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_sétima_atividade_tilt_shift">4.2. Sétima Atividade: Tilt-Shift.</a></li>
 </ul>
 </li>
-<li><a href="#_sobre_o_autor">5. Sobre o autor</a></li>
+<li><a href="#_filtragem_em_plano_frequencial">5. Filtragem em Plano Frequencial.</a>
+<ul class="sectlevel2">
+<li><a href="#_oitava_atividade_filtro_homomórfico">5.1. Oitava Atividade: Filtro Homomórfico.</a></li>
+<li><a href="#_nona_atividade_arte_pontilhista">5.2. Nona Atividade: Arte Pontilhista.</a></li>
+</ul>
+</li>
+<li><a href="#_sobre_o_autor">6. Sobre o autor</a></li>
 </ul>
 </div>
 </div>
@@ -1926,11 +1932,257 @@ No exercício em questão é trabalhada a equalização de histogramas que tem p
 </div>
 <div class="title">Figure 8. imagem miniaturisada</div>
 </div>
+<div class="paragraph">
+<p>Mais alguns resultados puderam ser obtidos</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>colocar as outras imagens.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_sobre_o_autor">5. Sobre o autor</h2>
+<h2 id="_filtragem_em_plano_frequencial">5. Filtragem em Plano Frequencial.</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_oitava_atividade_filtro_homomórfico">5.1. Oitava Atividade: Filtro Homomórfico.</h3>
+<div class="paragraph">
+<p>Quando certas condições e ambientes apresentam más condições de iluminação um filtro homomórfico pode vir a melhorar essa deficiência.
+Nessa atividade foi exercitado o conceito de filtragem da imagem no domínio da frequência, e suas etapas, como: pré-processamento, tranformação direta de fourier, aplicação de filtro, transformação inversa de fourier e pós-processamento.</p>
+</div>
+<div class="paragraph">
+<p>Para trabalhar com algumas funções da bibloteca OpenCV que multiplica espectros de frequência é necessário que ambas as matrizes desses espectros (matriz a ser filtrada e matriz-filtro) sejam matrizes complexas(no entanto apenas a parte real é de interesse), portanto precisamos incialmente preparar matrizes apropriadas para o uso da função 'mulSpectrums'. Além disso para o calculo da transformada é necessário que as dimensões da matrize sejam potências de base 2, então um processo de padding também se faz necessário. Abaixo pode se ver o trecho onde a matriz passa por um tratamento que a deixa em dimensões ideais (após o padding) e a monta uma matriz complexa.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>trecho  de padding</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="cpp"> <span class="tok-n">dft_M</span> <span class="tok-o">=</span> <span class="tok-n">getOptimalDFTSize</span><span class="tok-p">(</span><span class="tok-n">image</span><span class="tok-p">.</span><span class="tok-n">rows</span><span class="tok-p">);</span>
+ <span class="tok-n">dft_N</span> <span class="tok-o">=</span> <span class="tok-n">getOptimalDFTSize</span><span class="tok-p">(</span><span class="tok-n">image</span><span class="tok-p">.</span><span class="tok-n">cols</span><span class="tok-p">);</span>
+
+ <span class="tok-n">cout</span><span class="tok-o">&lt;&lt;</span><span class="tok-n">dft_M</span><span class="tok-o">&lt;&lt;</span><span class="tok-s">&quot;,&quot;</span><span class="tok-o">&lt;&lt;</span><span class="tok-n">dft_N</span><span class="tok-o">&lt;&lt;</span><span class="tok-n">endl</span><span class="tok-p">;</span>
+
+ <span class="tok-n">copyMakeBorder</span><span class="tok-p">(</span><span class="tok-n">image</span><span class="tok-p">,</span> <span class="tok-n">padded</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-n">dft_M</span> <span class="tok-o">-</span> <span class="tok-n">image</span><span class="tok-p">.</span><span class="tok-n">rows</span><span class="tok-p">,</span> <span class="tok-mi">0</span><span class="tok-p">,</span> <span class="tok-n">dft_N</span> <span class="tok-o">-</span> <span class="tok-n">image</span><span class="tok-p">.</span><span class="tok-n">cols</span><span class="tok-p">,</span> <span class="tok-n">BORDER_CONSTANT</span><span class="tok-p">,</span> <span class="tok-n">Scalar</span><span class="tok-o">::</span><span class="tok-n">all</span><span class="tok-p">(</span><span class="tok-mi">0</span><span class="tok-p">));</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>trecho confecção de matriz complexa</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>zeros = Mat_&lt;float&gt;::zeros(padded.size());
+
+  complexImage = Mat(padded.size(), CV_32FC2, Scalar(0)); //é criada uma matriz de dois canais
+                                                         //destinados a parte real e imaginária
+  for(int i=0;i&lt;10:i++)
+  ...
+
+planos.push_back(realInput);
+planos.push_back(zeros);
+
+  ...
+merge(planos, complexImage); //nesta linha finalmente é montada a matriz com-
+                                 //plexa com um canal real e um canal imaginário</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Outra função que também auxilia no processo de filtragem é a que desloca os quadrantes da imagem transformada de modo a pocicionar a origem do espectro na região central da imagem e facilita a sua manipulação</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>apresentação do deslocar regiões</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Temos então, que para a manipulação de iluminânica e reflectância de uma imagem precisamos pré-processá-la de forma que a tranformada de fourier possa ser aplicado satisfatoriamente, assim aplicamos o logarítimo natural aos pixels da parte real da imagem complexa, de forma a "dissociar" a iluminância da reflectância (que antes eram termos multiplicados) em parcelas de logarítimo natural da iluminância mais logarítmo natural da reflectância (devido a propriedade da multiplicação de logarítimo de mesma base), assim tornando viável a tranformada de fourier para ambas as partes separadamente.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>trecho do pré processamento</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Após ser realizada a filtragem no domínio da frequência e a tranformada inversa, a parte real é normalizada para que ocorra um pós-processamento da imagem afim de reverter o efeito do pré-processamento, assim o exponencial de cada pixel da parte real da matriz complexa é obtido restaurando assim a imagem à sua escala original. Após isto uma nova normalização é efetuada para efeitos de exibição e a parte real é exibida.</p>
+</div>
+<div class="sect3">
+<h4 id="_o_filtro_homomórfico">5.1.1. O filtro homomórfico.</h4>
+<div class="paragraph">
+<p>Sabe-se que a componente de iluminância da imagem reponde mais lentamente às variações, o que te atribui às baixas frequências nos espectro, enquanto que a reflectância tem maior velocidade às variações da imagem, o que a confere às frequências mais altas.</p>
+</div>
+<div class="paragraph">
+<p>Como o filtro homomórfico tem por interesse corrigir as falhas geradas pela má iluminação, é preferível quea as frequências mais baixas sejam mais atenuadas que as frequências mais altas, para tanto foi desenvolvido um filtro atenuador de frequência que apresenta tal modelo matemático.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>H(u, v) = (γH − γL)(1 − e−c(D²(u,v)/D0²)) + γL,</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>cujo comportamento gráfico pode ser descrito pelas imagens abaixo.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>as imagens (acresentar imagem do filtro tbm)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Nesta filtro 4 valores são ajustáveis pelo usuário, de forma a obter um melhro aspcto da filtragem, os valores são:
+	γH e γL, que definem o valor máximo e mínimo que o filtro pode assumir;
+	c, que ajusta a taxa de variação entre o valor máximo e o valor mínimo;
+	D0, que determina o valor de raio que terá o valor médio entre γH e γL;</p>
+</div>
+<div class="paragraph">
+<p>O código completo e seu resultado pode ser comtemplado abaixo</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>código completo e print das imagens</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nona_atividade_arte_pontilhista">5.2. Nona Atividade: Arte Pontilhista.</h3>
+<div class="paragraph">
+<p>Nesta última atividade se buscou trabalhar com a combinação de conceitos interacadêmicos, com a junção do detector de bordas de Canny e o efeito artístico pontilhista que representa uma gama de exposições no tocante à arte moderna. Então nesse sentido buscamos transformar uma imagem digital em um com efeito pontilhista mais realista somando com a aplicação da detecção de bordas de Canny, reproduzindo assim uma "pintura digital".</p>
+</div>
+<div class="paragraph">
+<p>No desenvolvimento desse projeto pode-se apresentar como novo a função Canny.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>trecho da função canny</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Esta função tem como argumentos a matriz de entrada e matriz de saída e dois limiares que serão definidos posteriormente, de forma sucinta a função de Canny detecta a fronteira do pontos localizados nos máximos locais da imagem, para isso é passado um filtro espacial do gaussiano e tirando o módulo e inclinação do gradiente, em seguida é feita uma "afinação" das bordas do gradiente (deixando numa fina expessura de 1 pixel) e por fim se aplica a ideia de limiarização por histerese, cuja função é a de eliminar a fragmentação das bordas causada pelo ruído da imagem; para essa tal supressão é que os argumentos finais da função atuam. Uma sugestão típica é que esses paramtros tenha uma razão igual à 2 ou à 3, no entanto no exemplo em questão exploramos uma razão igual à 4/3 como pode ser notado.</p>
+</div>
+<div class="paragraph">
+<p>Já no processo de confencção de um efeito pontilhista amostramos o valor de apenas alguns pixels da imagem original e em seguida desenhamos circulos na imagem final a ser gerada com os valores desses pixels amostrados.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>**trecho do código que</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="cpp"></code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>b = planes1[0].at&lt;uchar&gt;(x,y);
+   g = planes1[1].at&lt;uchar&gt;(x,y);
+   r = planes1[2].at&lt;uchar&gt;(x,y);</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>circle(points, cv::Point(y,x), RAIO1, CV_RGB(r,g,b), -1, CV_AA);</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Como se optou pela construção de um imagem pontilhista colorida, a matriz da imagem final é do tipo 'CV_8UC3', contendo 3 canais para as matrizes R,G e B, como pode ser notado no código acima (planes[2],planes[1]e planes[0]).</p>
+</div>
+<div class="paragraph">
+<p>Para a amostragem do valor desses pixels primeiro se guarda a posição dos pixels situados no centro de uma janela STEPxSTEP da imagem de referência, onde o valor de STEP é definido arbitrariamente no início do programa (para este exemplo), em vetores xrange1 e yrange1. Então com dois "for&#8217;s" que percorrem todos esses pontos de forma aleatória, devido a função 'random_shuffle' que embaralha todos os interadores do vetores xrange1 e yrange1 obtemos a posição (x,y) desses pontos centrais da janela STEPxSTEP e a deslocamos de seu centro aleatoriamente por um valor JITTER1 definido arbitrariamente no início do programa (para este exemplo), de tal modo que o valor do pixel na imagem de referência é agora salvo e usado para determinação de um circulo (com uso da função circle), centrado no ponto (x,y) + deslocamento aleatório, na imagem pontilhada. Tal aleatoriedade na centragem desses círculos confere um aspecto mais realista à imagem final.</p>
+</div>
+<div class="paragraph">
+<p>**trecho completo com deslocamento aleatório.</p>
+</div>
+<div class="paragraph">
+<p>Para dar mais realismo a imagem final jutamos a informação das bordas obtidas por Canny para dar efeitos mais realistas, assim os pixels de bordas foram também pontilhados e somados (com um ganho) à imagem de pontos por meio da função 'addWeighted', entretanto como era interessante que os pontos das bordas pontilhadas não tivessem o mesmo padrão de espalhamento, raio e amostragem outros padrões JITTER2, RAIO2 e STEP2, respectivamente, foram adotados para o pontilhamento das bordas a fim de se obter baixa aleatoriedade entre os pontos(JITTER2&lt;JITER1), maior quantidade de amostragem que as amostras da imagem final (STEP2&lt;STEP1) e pontos menores que o da imagem final(RAIO2&lt;RAIO1).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="cpp"><span class="tok-cp">#define STEP1 4</span>
+<span class="tok-cp">#define JITTER1 2</span>
+<span class="tok-cp">#define RAIO1 3</span>
+
+<span class="tok-cp">#define STEP2 3</span>
+<span class="tok-cp">#define JITTER2 1</span>
+<span class="tok-cp">#define RAIO2 1</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ainda no objetivo de se obter uma representação mais parecida com a de uma pintura de efeito pontilhista uma leve saturação é aplicado à imagem "soma" proveniente da função 'addWeighted' gerando uma nova imagem "saturado".</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>trecho da saturação</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>O resultado do programa e o código completo pode ser visto abaixo.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="cpp"></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>figura</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_sobre_o_autor">6. Sobre o autor</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Atrasado, porém persistente.</p>
@@ -1940,7 +2192,7 @@ No exercício em questão é trabalhada a equalização de histogramas que tem p
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-09-22 21:13:02 BRT
+Last updated 2016-10-27 12:45:29 BRT
 </div>
 </div>
 <script type="text/x-mathjax-config">
